@@ -1,13 +1,5 @@
-from commands import mkfs, stat, ls, create, link, unlink, open_file, close, seek, write, read, truncate
-from file_system_state import FileSystemState
-
-
-def check_state():
-    if FileSystemState.file_system is None:
-        print('The file system is not initialised')
-        return 1
-    return 0
-
+from commands import mkfs, stat, ls, create, link, unlink, open_file, close, seek, write, read, truncate, symlink, \
+    mkdir, rmdir, cd
 
 while True:
     try:
@@ -37,6 +29,14 @@ while True:
             unlink(input_array[1])
         elif command == 'truncate':
             truncate(input_array[1], int(input_array[2]))
+        elif command == 'symlink':
+            symlink(input_array[1], input_array[2])
+        elif command == 'mkdir':
+            mkdir(input_array[1])
+        elif command == 'rmdir':
+            rmdir(input_array[1])
+        elif command == 'cd':
+            cd(input_array[1])
         elif command == 'exit':
             exit(0)
         else:
